@@ -1,0 +1,198 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x:hidden;
+}
+
+body {
+    font-family: "Titillium Web", sans-serif;
+    display: flex;
+    flex-direction: column;
+}
+
+.navbar {
+    padding: 1em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar h1 {
+    font-size: 24px;
+    margin-left: 5%;
+}
+
+.navbar ul {
+    margin: 0;
+    padding: 0;
+    text-align: right;
+    margin-right: 5%;
+}
+
+.navbar ul li {
+    display: inline;
+}
+
+.navbar ul li a {
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    padding: 10px 15px;
+    display: inline-block;
+}
+
+.navbar ul li a:hover {
+    background-color: #c9c9c9;
+    border-radius: 30px;
+}
+
+#cart-count {
+    margin-left: 8px;
+    background-color: rgb(255, 0, 0);
+    color: white;
+    border-radius: 50%;
+    padding: 4px 10px;
+    font-size: 14px;
+    vertical-align: top;
+}
+
+.fas.fa-shopping-cart {
+    font-size: 18px;
+}
+
+
+.shop-container {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    gap: 30px;
+    padding: 20px;
+    max-width: 100%;
+    margin: 0 auto;
+    width: 90%;
+}
+
+
+#load-more {
+    grid-column: 2;
+    justify-self: center;
+    margin: 10px 0px;
+    padding: 10px 20px;
+    background-color: #000000;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+#load-more:hover {
+    background-color:  #2b00ff;
+}
+
+.far.fa-star,
+.fas.fa-star-half-alt,
+.fas.fa-star {
+    color: #FFD700;
+}
+
+
+.filter {
+    margin-top: 20px; 
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.filter-group {
+    position: sticky;
+    top: 10%;
+}
+
+.filter-group h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.filter-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.filter-list li {
+    margin-bottom: 10px;
+}
+
+.filter-list li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 16px;
+}
+
+.filter-list li.active a {
+    font-weight: bold;
+}
+
+.filter-group input[type="range"] {
+    width: 100%;
+    margin: 10px 0;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 50px;
+    padding: 20px;
+    max-width: 100%;
+    justify-content: center;
+    
+}
+
+.product {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.product h2 {
+    font-size: 20px;
+    margin-top: 20px;               
+    text-align: left;
+    padding-left: 10%;    
+}
+
+.product p {
+    text-align: left;
+    padding-left: 10%;    
+}
+.product img {
+    width: 100%;
+    height: auto;
+}
+
+.product button {
+    margin-bottom: 30px;
+    padding: 10px 20px;
+    background-color: #000000;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 15px;
+}
+
+.product:hover {
+    transform: scale(1.05);
+    box-shadow: 1px 3px 10px rgba(0, 0, 0, 0.75);
+}
+
+.product button:hover {
+    background-color:  #2b00ff;
+}
+
+.out {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+
+

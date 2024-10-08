@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="product.css">
+    <title>Shop</title>
+</head>
+<body>
+    <nav class="navbar">
+        <h1>Shop Name</h1>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="about.html">About</a></li>            
+            <li><a href="cart.html">
+                <i class="fas fa-shopping-cart"></i>
+                <span id="cart-count">0</span>
+            </a></li>
+        </ul>
+    </nav>
+    <div class="shop-container">
+        <aside class="filter">
+            <div class="filter-group">
+                <h3>Category:</h3>
+                <ul class="filter-list">
+                    <li><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                </ul>
+                <h3>Price Range:</h3>
+                <input type="range" id="price" min="0" max="60">
+                <span>$0 - $60</span>
+            </div>
+        </aside>
+
+        <div class="product-grid" id="product-list">
+        </div>
+        <button id="load-more" style="display: none;">Load More</button>
+    </div>
+
+    <script src="product.js"></script>
+</body>
+</html>
+
