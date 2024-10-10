@@ -194,5 +194,30 @@ body {
     pointer-events: none;
 }
 
+.hide {
+    display: block;
+}
 
+/* Tablet: Between 768px and 426px */
+@media only screen and (min-width: 650px) and (max-width: 850px) {
+    .shop-container {
+        grid-template-columns: 1.25fr 4fr;
+    }
+    .product-grid {
+        grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+        gap: 40px;
+    }
+}
 
+/* Mobile: Up to 425px */
+@media only screen and (max-width: 650px) {
+    .shop-container {
+        grid-template-columns: 1fr;
+    }
+    #load-more {
+        grid-column: 1;
+    }
+    .hide {
+        display: none;
+    }
+}

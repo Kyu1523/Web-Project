@@ -108,18 +108,24 @@ function setupFilters() {
 
 //Add to cart
 function addToCart(productId) {
-    const product = products.find(p => p.id === productId);
-    if (product) {
-        cart.push(productId);
-        saveCartToLocalStorage();
-        updateCartUI();
+    const productInCart = cart.find(item => item.productId === productId);
+    
+    if (productInCart) {
+        productInCart.quantity++;
+    } 
+    else {
+        cart.push({ productId, quantity: 1 });
     }
+    
+    saveCartToLocalStorage();
+    updateCartUI();
 }
 
 //Update Cart count
 function updateCartUI() {
     const cartCountElement = document.getElementById('cart-count');
-    cartCountElement.textContent = cart.length; 
+    const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+    cartCountElement.textContent = totalItems;
 }
 
 //Save cart to localStorage

@@ -31,16 +31,16 @@ function displayCart() {
     const cartList = document.getElementById('cart-list');
     cartList.innerHTML = ''; 
 
-    cart.forEach(productId => {
-        const product = products.find(p => p.id === productId);
+    cart.forEach(cartItem => {
+        const product = products.find(p => p.id === cartItem.productId);
         if (product) {
-            const cartItem = document.createElement('li');
-            cartItem.textContent = `${product.name} - $${product.price}`;
-            cartList.appendChild(cartItem);
+            const listItem = document.createElement('li');
+            listItem.textContent = `${product.name} - $${product.price} (Quantity: ${cartItem.quantity})`;
+            cartList.appendChild(listItem);
         }
     });
-
 }
+
 
 function clearCart() {
     console.log('Clear cart function called');
