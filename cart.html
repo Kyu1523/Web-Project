@@ -3,13 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cart</title>
+    <title>Shopping Cart</title>
+    <link rel="stylesheet" href="cart.css">
 </head>
 <body>
-    <a href="product.html">Product</a>
-    <h1>Your Cart</h1>
-    <ul id="cart-list"></ul>
+    <nav class="navbar">
+        <h1>Shop Name</h1>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="product.html">Products</a></li>
+            <li><a href="about.html">About</a></li>            
+            <li><a href="cart.html">
+                <i class="fas fa-shopping-cart"></i>
+                <span id="cart-count">0</span>
+            </a></li>
+        </ul>
+    </nav>
+    <div class="cart-container">
+        <div class="cart-left">
+            <h2>Your Cart</h2>
+            <ul id="cart-list"></ul>
+            <button class="clear-cart">Clear Cart</button>
+        </div>
+        <div class="cost">
+            <p class="shipping-cost">Shipping & Handing: $0.00</p>
+            <p class="tax-price">Estimated tax to be: $0.00</p>
+            <p class="total-price">Grand Total: $0.00</p>
+            <button class="checkout-cart">Proceed to checkout</button>
 
+            <p class="cost-note">* Tax and shipping fees may vary based on your location.</p>
+            <div class="product-recommendations">
+                <h3>Recommended for You</h3>
+                <div id="recommended-products" class="recommended-products"></div>
+            </div>
+            
+        </div>
+    </div>
     <script src="cart.js"></script>
 </body>
 </html>
