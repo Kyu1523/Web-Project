@@ -4,7 +4,7 @@ let products = [];
 //Load the products from the JSON file
 async function fetchProducts() {
     try {
-        const response = await fetch('products.json'); 
+        const response = await fetch('https://6716f1943fcb11b265d3fceb.mockapi.io/api/v1/products'); 
         products = await response.json();
         loadCartFromLocalStorage();
     } catch (error) {

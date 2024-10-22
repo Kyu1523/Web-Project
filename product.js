@@ -4,10 +4,10 @@ let currentIndex = 0;
 const productsPerPage = 6;
 let loadMoreClicks = 0;
 
-//Load the products from the JSON file
+// Load the products from the MockAPI endpoint
 async function fetchProducts(category = 'All') {
     try {
-        const response = await fetch('products.json'); 
+        const response = await fetch('https://6716f1943fcb11b265d3fceb.mockapi.io/api/v1/products'); 
         products = await response.json();
         currentIndex = 0;
         displayProducts(category);
@@ -16,7 +16,7 @@ async function fetchProducts(category = 'All') {
     }
 }
 
-//Load cart items from localStorage
+// Load cart items from localStorage
 function loadCartFromLocalStorage() {
     const storedCart = localStorage.getItem('cart');
     if (storedCart) {
@@ -25,7 +25,7 @@ function loadCartFromLocalStorage() {
     }
 }
 
-//Add starts for rating
+// Add stars for rating
 function getStars(rating) {
     let stars = '';
     for (let i = 0; i < Math.floor(rating); i++) {
@@ -40,12 +40,17 @@ function getStars(rating) {
     return stars;
 }
 
-//Display products
+// Display products
 function displayProducts(category) {
     const productList = document.getElementById('product-list');
     const loadMoreButton = document.getElementById('load-more');
 
-    const filteredProducts = category === 'All' ? products : products.filter(product => product.category === category);
+    // Display all products if 'All' is selected
+    const filteredProducts = category === 'All'
+        ? products
+        : products.filter(product => Array.isArray(product.category)
+            ? product.category.includes(category)
+            : product.category === category);
     const productsToDisplay = filteredProducts.slice(0, (loadMoreClicks + 1) * productsPerPage);
 
     productList.innerHTML = '';
@@ -83,16 +88,21 @@ function displayProducts(category) {
     loadMoreButton.style.display = (loadMoreClicks + 1) * productsPerPage >= filteredProducts.length ? 'none' : 'block';
 }
 
-//Display more products
+// Display more products
 document.getElementById('load-more').addEventListener('click', () => {
     loadMoreClicks++;
     const selectedCategory = document.querySelector('.filter-list li.active')?.textContent || 'All';
     displayProducts(selectedCategory);
 });
 
-//Filter function
+// Filter function
 function setupFilters() {
     const filterLinks = document.querySelectorAll('.filter-list li');
+
+    if (filterLinks.length > 0) {
+        filterLinks[0].classList.add('active');
+        displayProducts('All');
+    }
 
     filterLinks.forEach(link => {
         link.addEventListener('click', (event) => {
@@ -101,19 +111,19 @@ function setupFilters() {
 
             const selectedCategory = event.target.textContent;
             loadMoreClicks = 0;
-            displayProducts(selectedCategory);
+
+            displayProducts(selectedCategory === 'All' ? 'All' : selectedCategory);
         });
     });
 }
 
-//Add to cart
+// Add to cart
 function addToCart(productId) {
     const productInCart = cart.find(item => item.productId === productId);
     
     if (productInCart) {
         productInCart.quantity++;
-    } 
-    else {
+    } else {
         cart.push({ productId, quantity: 1 });
     }
     
@@ -121,14 +131,14 @@ function addToCart(productId) {
     updateCartUI();
 }
 
-//Update Cart count
+// Update Cart count
 function updateCartUI() {
     const cartCountElement = document.getElementById('cart-count');
     const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
     cartCountElement.textContent = totalItems;
 }
 
-//Save cart to localStorage
+// Save cart to localStorage
 function saveCartToLocalStorage() {
     localStorage.setItem('cart', JSON.stringify(cart));
 }
@@ -140,8 +150,7 @@ function clearCart() {
     updateCartUI();
 }
 
-
 fetchProducts();
 setupFilters();
 loadCartFromLocalStorage();
-//clearCart();
+// clearCart();
