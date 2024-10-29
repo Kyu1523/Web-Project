@@ -16,11 +16,15 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    line-height: normal;
 }
 
 .navbar h1 {
     font-size: 24px;
     margin-left: 5%;
+    font-weight: bold;
+    margin-top: .85em;
+    margin-bottom:.7em;
 }
 
 .navbar ul {
@@ -56,13 +60,17 @@ body {
     vertical-align: top;
 }
 
+.fas.fa-shopping-cart {
+    font-size: 18px;
+}
+
 #carousel{
     margin-top: 30px;
     background-color: rgb(241, 241, 241);
 }
 
 #carousel img{
-    height: 40vh;
+    height: 50vh;
     object-fit: contain;
 }
 
@@ -84,7 +92,7 @@ body {
     margin-left: 20px;
 }
 
-#recommend-button{
+.carousel-control-next, .carousel-control-prev{
     filter: invert(100%);
 }
 
