@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <link rel="stylesheet" href= "index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+</head>
+<body>
+    <nav class="navbar">
+        <h1>Shop Name</h1>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="product.html">Products</a></li>
+            <li><a href="about.html">About</a></li>            
+            <li><a href="cart.html">
+                <i class="fas fa-shopping-cart"></i>
+                <span id="cart-count">0</span>
+            </a></li>
+        </ul>
+    </nav>
+
+    <div id="carousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Product 1"></button>
+            <button type="button" data-bs-target="#carousel" data-bs-slide-to="1" aria-label="Product 2"></button>
+            <button type="button" data-bs-target="#carousel" data-bs-slide-to="2" aria-label="Product 3"></button>
+        </div>
+        <div class="carousel-items">
+            <div class="carousel-item active">
+                <img src="https://placehold.co/600x400" class="d-block w-100" alt="Product 1">
+            </div>
+            <div class="carousel-item">
+                <img src="https://placehold.co/600x400" class="d-block w-100" alt="Product 2">
+            </div>
+            <div class="carousel-item">
+                <img src="https://placehold.co/600x400" class="d-block w-100" alt="Product 3">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        </button>
+        </div>
+    </div>
+
+    <h1 id="For-you-text"> For You </h1>
+
+    <div id = "For-you" class="carousel slide">
+        <div class="carousel-items" id = "">
+            <div class="carousel-item active" id ="carousel-cards">
+                <div class="card-container">
+                    <div class="card">
+                        <a href = "product.html"><img src = "https://via.placeholder.com/300"></a>
+                        <div class="card-body">
+                            <p class="card-text">Product 1</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <a href = "product.html"><img src = "https://via.placeholder.com/300"></a>
+                        <div class="card-body">
+                            <p class="card-text">Product 2</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <a href = "product.html"><img src = "https://via.placeholder.com/300"></a>
+                        <div class="card-body">
+                            <p class="card-text">Product 3</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <a href = "product.html"><img src = "https://via.placeholder.com/300"></a>
+                        <div class="card-body">
+                            <p class="card-text">Product 4</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <a href = "product.html"><img src = "https://via.placeholder.com/300"></a>
+                        <div class="card-body">
+                            <p class="card-text">Product 5</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item" id = "carousel-cards">
+                <div class="card-container">
+                    <div class="card">
+                        <a href = "product.html"><img src = "https://via.placeholder.com/300"></a>
+                        <div class="card-body">
+                            <p class="card-text">Product 6</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <a href = "product.html"><img src = "https://via.placeholder.com/300"></a>
+                        <div class="card-body">
+                            <p class="card-text">Product 7</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>  
+        <button class="carousel-control-prev" type="button" data-bs-target="#For-you" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true" id = "recommend-button"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#For-you" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true" id = "recommend-button"></span>
+        </button>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src = "index.js"></script>
+</body>
+</html>

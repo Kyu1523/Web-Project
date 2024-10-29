@@ -1,0 +1,111 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x:hidden;
+}
+
+body {
+    font-family: "Titillium Web", sans-serif;
+    display: flex;
+    flex-direction: column;
+}
+
+.navbar {
+    padding: 1em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar h1 {
+    font-size: 24px;
+    margin-left: 5%;
+}
+
+.navbar ul {
+    margin: 0;
+    padding: 0;
+    text-align: right;
+    margin-right: 5%;
+}
+
+.navbar ul li {
+    display: inline;
+}
+
+.navbar ul li a {
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    padding: 10px 15px;
+    display: inline-block;
+}
+
+.navbar ul li a:hover {
+    background-color: #c9c9c9;
+    border-radius: 30px;
+}
+
+#cart-count {
+    margin-left: 8px;
+    background-color: rgb(255, 0, 0);
+    color: white;
+    border-radius: 50%;
+    padding: 4px 10px;
+    font-size: 14px;
+    vertical-align: top;
+}
+
+#carousel{
+    margin-top: 30px;
+    background-color: rgb(241, 241, 241);
+}
+
+#carousel img{
+    height: 40vh;
+    object-fit: contain;
+}
+
+#For-you-text{
+    margin-top:10vh;
+    margin-left:20vh;
+}
+
+#For-you img{
+    height:30vh;
+    object-fit: contain;
+}
+.card-container{
+    display:flex;
+    justify-content: center;
+}
+
+.card{
+    margin-left: 20px;
+}
+
+#recommend-button{
+    filter: invert(100%);
+}
+
+@media only screen and (min-width: 650px) and (max-width: 850px) {
+    .shop-container {
+        grid-template-columns: 1.25fr 4fr;
+    }
+    .product-grid {
+        grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+        gap: 40px;
+    }
+}
+
+@media only screen and (max-width: 650px) {
+    .shop-container {
+        grid-template-columns: 1fr;
+    }
+    #load-more {
+        grid-column: 1;
+    }
+    .hide {
+        display: none;
+    }
+}
