@@ -59,7 +59,7 @@ body {
 }
 
 .navbar ul li a:hover {
-    
+    color:white;
     border-radius: 30px;
     background-color:#448361;
 }
