@@ -42,7 +42,7 @@ function displayCart() {
     cartList.innerHTML = ''; 
 
     const cartDate = localStorage.getItem('cartDate');
-    if (cart.length > 0) {
+    if (cartDate && cart.length > 0) {
         if (cartDate) {
             const dateElement = document.createElement('p');
             dateElement.classList.add('cart-date');
@@ -74,7 +74,7 @@ function displayCart() {
             decreaseButton.addEventListener('click', () => updateQuantity(item.productId, -1));
             
             cartItem.innerHTML = `
-                <img src="${imageUrl}" alt="${product.name}" />
+                 <img src="${imageUrl}" alt="${product.name}" style="width: 150px; height: 150px;" />
                 <div class="cart-item-info">
                     <h2>${product.name}</h2>
                     <p>Price: $${product.price}</p>
@@ -114,6 +114,7 @@ function clearCart() {
     console.log('Clear cart function called');
     cart = [];
     localStorage.removeItem('cart');
+    localStorage.removeItem('cartDate');
     displayCart();
 }
 function calculateCost(){
@@ -195,7 +196,7 @@ function addToCart(productId) {
     }
     saveCartToLocalStorage();
     updateCartUI();
-    displayCart();
+    loadCartFromLocalStorage();
 }
 // Add event listeners for buttons
 document.querySelector('.clear-cart').addEventListener('click', clearCart);
