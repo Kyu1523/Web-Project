@@ -74,8 +74,9 @@ function displayProducts(category) {
             }
         });
 
+        const imagePath = product.image_path ? product.image_path : 'https://via.placeholder.com/300'; // Set placeholder if image_path is null
         productDiv.innerHTML = `
-            <img src="https://via.placeholder.com/300" alt="${product.name}" />
+            <img src="${imagePath}" alt="${product.name}" />
             <h2>${product.name}</h2>
             <p>${getStars(product.rating || 0)}</p>
             <p>$${product.price}</p>
