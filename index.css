@@ -17,6 +17,7 @@ body {
     justify-content: space-between;
     align-items: center;
     line-height: normal;
+    background-color:#edf3ec;
 }
 
 .navbar h1 {
@@ -46,7 +47,8 @@ body {
 }
 
 .navbar ul li a:hover {
-    background-color: #c9c9c9;
+    background-color:#448361;
+    color:white;
     border-radius: 30px;
 }
 
@@ -65,7 +67,6 @@ body {
 }
 
 #carousel{
-    margin-top: 30px;
     background-color: rgb(241, 241, 241);
 }
 
@@ -76,7 +77,8 @@ body {
 
 #For-you-text{
     margin-top:10vh;
-    margin-left:20vh;
+    margin-left:30vh;
+    font-size: 5vh;
 }
 
 #For-you img{

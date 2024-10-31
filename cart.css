@@ -16,7 +16,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    color: #448361;
+   
     background-color:#edf3ec;
 
 }
@@ -134,4 +134,117 @@ h2 {
     padding: 10px;
     border-bottom: 1px solid #ddd;
     align-items: center;
+}
+.clear-cart{
+    margin-bottom: 15px;
+}
+
+/* Tablet: Between 768px and 426px */
+@media only screen and (min-width: 650px) and (max-width: 850px) {
+    .cart-container {
+        display: flex;
+        flex-direction: row;
+        width: 95%;
+        margin: 20px auto;
+        padding: 10px;
+    }
+
+    .cart-left {
+        flex: 3; /* Occupies 3 parts of the container */
+        margin: 15px 10px;
+    }
+
+    .cost {
+        flex: 1; /* Occupies 1 part of the container */
+        margin: 15px 0;
+    }
+
+    .clear-cart,
+    .checkout-cart {
+        font-size: 16px;
+        padding: 10px 20px;
+    }
+
+    .add-to-cart {
+        font-size: 12px;
+        padding: 8px 15px;
+    }
+
+    .cart-item {
+        text-align: center;
+    }
+
+    .cart-item img {
+        width: 100px;
+        height: auto;
+        margin-bottom: 15px;
+    }
+
+    .cart-item-info {
+        font-size: 16px;
+        padding: 8px;
+    }
+
+    .cart-item-quantity {
+        font-size: 16px;
+    }
+
+    .add-to-cart,
+    .clear-cart,
+    .checkout-cart {
+        font-size: 14px;
+        padding: 10px 15px;
+    }
+}
+/* Mobile: Up to 425px */
+@media (max-width: 650px) {
+    .cart-container {
+        flex-direction: column;
+        width: 90%;
+        margin: 20px auto;
+    }
+
+    .cart-left,
+    .cost {
+        width: 100%;
+        margin: 10px 0;
+    }
+
+    .clear-cart,
+    .checkout-cart {
+        font-size: 14px;
+        padding: 8px 15px;
+    }
+
+    .add-to-cart {
+        font-size: 10px;
+        padding: 6px 10px;
+    }
+
+    .cart-item {
+        text-align: center;
+    }
+
+    .cart-item img {
+        width: 80px;
+        height: auto;
+        margin-bottom: 10px;
+    }
+
+    .cart-item-info {
+        font-size: 14px;
+        padding: 5px;
+    }
+
+    .cart-item-quantity {
+        font-size: 14px;
+    }
+
+    .add-to-cart,
+    .clear-cart,
+    .checkout-cart {
+        font-size: 12px;
+        padding: 8px 10px;
+    }
+    
 }
