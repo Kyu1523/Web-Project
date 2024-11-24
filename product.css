@@ -11,6 +11,10 @@ body {
     flex-direction: column;
 }
 
+.hide {
+    display: inline-block;
+}
+
 .navbar {
     padding: 1em;
     display: flex;
@@ -40,11 +44,6 @@ body {
     text-decoration: none;
     padding: 10px 15px;
     display: inline-block;
-}
-
-.navbar ul li a:hover {
-    background-color: #edf3ec;
-    border-radius: 30px;
 }
 
 .navbar ul li a:hover {
@@ -84,7 +83,7 @@ body {
     justify-self: center;
     margin: 10px 0px;
     padding: 10px 20px;
-    background-color: #448361;
+    background-color: #000000;
     color: white;
     border: none;
     border-radius: 15px;
@@ -92,7 +91,7 @@ body {
 }
 
 #load-more:hover {
-    background-color:  #335f47;
+    background-color:  #2b00ff;
 }
 
 .far.fa-star,
@@ -100,6 +99,7 @@ body {
 .fas.fa-star {
     color: #FFD700;
 }
+
 
 .filter {
     margin-top: 20px; 
@@ -148,10 +148,86 @@ body {
     cursor: default;
 }
 
-.filter-group input[type="range"] {
+/*Geeks for Geeks*/
+.price-input-container {
     width: 100%;
-    margin: 10px 0;
 }
+
+.price-input .price-field {
+    display: flex;
+    margin-bottom: 22px;
+    align-items: center;
+    gap: 5px;
+    margin-top: 25px;;
+}
+
+.price-field span {
+    font-size: 15px;
+    color: #2a2a2a;
+    text-align: center;
+}
+
+
+.price-field input {
+    height: 35px;
+    font-size: 15px;
+    border-radius: 15px;
+    text-align: center;
+    border: 0px;
+    background: #e4e4e4;
+    width: 50px;
+}
+
+/* Remove Arrows/Spinners */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.slider-container {
+    height: 6px;
+    position: relative;
+    background: #e4e4e4;
+    border-radius: 5px;
+    margin: -2px 8px;
+}
+
+.slider-container .price-slider {
+    height: 100%;
+    left: 19%;
+    right: 15%;
+    position: absolute;
+    border-radius: 5px;
+    background: #00c62e;
+    overflow: hidden;
+}
+
+.range-input {
+    position: relative;
+}
+
+.range-input input {
+    position: absolute;
+    width: 100%;
+    height: 5px;
+    background: none;
+    top: -5px;
+    pointer-events: none;
+    cursor: pointer;
+    appearance: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    height: 20px;
+    width: 20px;
+    border-radius: 70%;
+    background: #555;
+    pointer-events: auto;
+    -webkit-appearance: none;
+}
+
+/**/
 
 .product-grid {
     display: grid;
@@ -210,23 +286,102 @@ body {
     pointer-events: none;
 }
 
-.hide {
-    display: block;
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    width: 100%; 
+    height: 100%;
+    background-color: rgba(0,0,0,0.3);
 }
 
+.modal-content {
+    display: flex;
+    overflow-y: auto;
+    flex-direction: column;
+    width: 43%; 
+    height: 100%;                   
+    background-color: #fefefe;             
+    padding: 50px; 
+    float: right;                 
+}
+
+.modal-content h2 {
+    margin: 0 auto; 
+    padding: 15px 0px;
+}
+
+.modal-content p{
+    margin: 0 auto; 
+    padding: 10px 0px;
+}
+
+.modal-content img {
+    width: 350px;
+    height:auto;
+    margin: 0 auto;
+    padding-top: 30px;
+}
+
+.row {
+    flex-direction: row;
+    margin: 0 auto;
+    padding: 50px 0px;
+}
+
+.modal-content a,
+#continue {
+    padding: 10px 20px;
+    background-color: #000000;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 15px;
+}
+
+#continue {
+    margin-right: 50px; 
+}
+
+#continue:hover,
+.modal-content a:hover {
+    background-color:  #2b00ff;
+}
+
+.close {
+    position: absolute; /* Absolute position within modal content */
+    top: 35px; /* Space from the top */
+    right: 50px; /* Space from the right */
+    font-size: 40px;
+    font-weight: bold;
+    color: #aaa;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: black; /* Darken on hover */
+    text-decoration: none;
+}
+  
 /* Tablet: Between 768px and 426px */
-@media only screen and (min-width: 650px) and (max-width: 850px) {
+@media only screen and (min-width: 675px) and (max-width: 850px) {
     .shop-container {
         grid-template-columns: 1.25fr 4fr;
     }
     .product-grid {
-        grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(175px, 1fr));
         gap: 40px;
+    }
+    #continue {
+        margin-right: 20px; 
     }
 }
 
 /* Mobile: Up to 425px */
-@media only screen and (max-width: 650px) {
+@media only screen and (max-width: 675px) {
     .shop-container {
         grid-template-columns: 1fr;
     }
@@ -235,5 +390,23 @@ body {
     }
     .hide {
         display: none;
+    }
+    .modal-content {
+        width: 100%; 
+        height: 100%;                   
+        background-color: #fefefe;             
+        padding: 60px 0px;                 
+    }
+
+    .modal-content img {
+        width: 350px;
+        margin-bottom: 10px;
+        height:auto;
+    }
+    
+    .row {
+        flex-direction: row;
+        margin: 0 auto;
+        
     }
 }

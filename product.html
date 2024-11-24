@@ -11,15 +11,32 @@
     <nav class="navbar">
         <h1>Shop Name</h1>
         <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="product.html">Products</a></li>
-            <li><a href="about.html">About</a></li>            
+            <div class="hide">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="product.html">Products</a></li>
+                <li><a href="about.html">About</a></li>  
+            </div>          
             <li><a href="cart.html">
                 <i class="fas fa-shopping-cart"></i>
                 <span id="cart-count">0</span>
             </a></li>
         </ul>
-    </nav>
+    </nav>  
+
+    <div id="productModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeButton">&times;</span>
+            <img id="modalProductImage" src="" alt="Product Image">
+            <h2 id="modalProductName"></h2>
+            <p id="modalProductPrice"></p>
+            <p id="modalProductDescription"></p>
+            <div class="row">
+                <button id="continue">Continue Shopping</button>
+                <a href="cart.html">Go to cart</a>
+            </div>
+        </div>
+    </div>
+
     <div class="shop-container">
         <aside class="filter hide">
             <div class="filter-group">
@@ -32,14 +49,33 @@
                     <li><a href="#">Pods</a></li>
                 </ul>
                 <h3>Price Range:</h3>
-                <input type="range" id="price" min="0" max="60">
-                <span>$0 - $60</span>
+                <br>
+                <div class="price-input-container">
+                    <div class="slider-container">
+                        <div class="price-slider">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="range-input">
+                    <input type="range" class="min-range" min="0" max="120" value="15"step="1">
+                    <input type="range" class="max-range" min="0" max="120" value="100" step="1">
+                </div>
+                <div class="price-input">
+                    <div class="price-field">
+                        <input type="number" class="min-input" value="15">
+                        <span>-</span>
+                        <input type="number" class="max-input" value="100">
+                    </div>
+                </div>
             </div>
+
         </aside>
 
         <div class="product-grid" id="product-list">
         </div>
     </div>
+
     <div class="shop-container">
         <button id="load-more" style="display: none;">Load More</button>
     </div>
@@ -47,3 +83,5 @@
     <script src="product.js"></script>
 </body>
 </html>
+
+
