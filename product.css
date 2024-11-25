@@ -2,17 +2,29 @@ html, body {
     height: 100%;
     margin: 0;
     padding: 0;
-    overflow-x:hidden;
+    overflow-x: hidden;
 }
 
 body {
     font-family: "Titillium Web", sans-serif;
     display: flex;
     flex-direction: column;
+    margin: 0;
 }
 
-.hide {
-    display: inline-block;
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    --bar-width: 30px;
+    --bar-height: 5px;
+    --hamburger-gap: 4px; 
+    --hamburger-margin: 8px; 
+    --hamburger-height: calc(var(--bar-height) * 3 + var(--hamburger-gap) * 2);
+    --animation-timing: 200ms ease-in-out;
+    --foreground: #333;
+    --background: #edf3ec;
 }
 
 .navbar {
@@ -20,7 +32,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color:#edf3ec;
+    background-color: var(--background);
 }
 
 .navbar h1 {
@@ -29,32 +41,35 @@ body {
 }
 
 .navbar ul {
+    display: flex;
+    align-items: center;
     margin: 0;
     padding: 0;
-    text-align: right;
     margin-right: 5%;
+    list-style: none;
 }
 
 .navbar ul li {
-    display: inline;
+    margin-left: 15px;
 }
 
 .navbar ul li a {
-    color: rgb(0, 0, 0);
+    color: #000;
     text-decoration: none;
     padding: 10px 15px;
     display: inline-block;
+    border-radius: 30px;
+    transition: background-color 0.2s, color 0.2s;
 }
 
 .navbar ul li a:hover {
-    background-color:#448361;
-    color:white;
-    border-radius: 30px;
+    background-color: #448361;
+    color: #fff;
 }
 
 #cart-count {
     margin-left: 8px;
-    background-color: rgb(255, 0, 0);
+    background-color: red;
     color: white;
     border-radius: 50%;
     padding: 4px 10px;
@@ -66,6 +81,102 @@ body {
     font-size: 18px;
 }
 
+.hide {
+    display: inline-block;
+}
+
+.show {
+    display: none;
+}
+
+.hamburger-menu {
+    --x-width: calc(var(--hamburger-height) * 1.41421356237);
+    display: inline-flex;
+    flex-direction: column;
+    gap: var(--hamburger-gap);
+    cursor: pointer;
+    margin: var(--hamburger-margin);
+    align-items: center;
+    z-index: 10;
+    position: relative; 
+}
+
+.hamburger-menu:has(input:checked) {
+    --foreground: #fff;
+    --background: #333;
+}
+
+.hamburger-menu::before,
+.hamburger-menu::after,
+.hamburger-menu input {
+    content: "";
+    width: var(--bar-width);
+    height: var(--bar-height);
+    background-color: var(--foreground);
+    border-radius: 9999px;
+    transform-origin: left center;
+    transition: opacity var(--animation-timing),
+        width var(--animation-timing),
+        rotate var(--animation-timing),
+        translate var(--animation-timing),
+        background-color var(--animation-timing);
+}
+
+.hamburger-menu input {
+    appearance: none;
+    padding: 0;
+    margin: 0;
+    outline: none;
+    pointer-events: none;
+}
+
+.hamburger-menu:has(input:checked)::before {
+    rotate: 45deg;
+    width: var(--x-width);
+    translate: 0 calc(var(--bar-height) / -2);
+}
+
+.hamburger-menu:has(input:checked)::after {
+    rotate: -45deg;
+    width: var(--x-width);
+    translate: 0 calc(var(--bar-height) / 2);
+}
+
+.hamburger-menu input:checked {
+    opacity: 0;
+    width: 0;
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    transition: translate var(--animation-timing);
+    translate: 100%;
+    padding: 50px 0px;
+    background-color: rgb(205, 215, 208);
+    max-width: 10rem;
+    min-height: 100vh;
+    z-index: 1;
+    
+}
+
+#menu-toggle:checked ~ .sidebar {
+    translate: 0;
+}
+
+.sidebar ul {
+    display: flex;
+    flex-direction: column;
+    margin-top: 50px;
+}
+.sidebar ul li { 
+    padding: 5px 0px; 
+}
+
+.hamburger-menu:has(input:checked) + .sidebar {
+    translate: 0;
+}
 
 .shop-container {
     display: grid;
@@ -83,7 +194,7 @@ body {
     justify-self: center;
     margin: 10px 0px;
     padding: 10px 20px;
-    background-color: #000000;
+    background-color: #448361;
     color: white;
     border: none;
     border-radius: 15px;
@@ -91,7 +202,7 @@ body {
 }
 
 #load-more:hover {
-    background-color:  #2b00ff;
+    background-color:  #335f47;
 }
 
 .far.fa-star,
@@ -148,7 +259,6 @@ body {
     cursor: default;
 }
 
-/*Geeks for Geeks*/
 .price-input-container {
     width: 100%;
 }
@@ -178,7 +288,6 @@ body {
     width: 50px;
 }
 
-/* Remove Arrows/Spinners */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
     -webkit-appearance: none;
@@ -226,8 +335,6 @@ input[type="range"]::-webkit-slider-thumb {
     pointer-events: auto;
     -webkit-appearance: none;
 }
-
-/**/
 
 .product-grid {
     display: grid;
@@ -332,7 +439,7 @@ input[type="range"]::-webkit-slider-thumb {
 .modal-content a,
 #continue {
     padding: 10px 20px;
-    background-color: #000000;
+    background-color: #448361;
     color: white;
     border: none;
     border-radius: 15px;
@@ -347,13 +454,13 @@ input[type="range"]::-webkit-slider-thumb {
 
 #continue:hover,
 .modal-content a:hover {
-    background-color:  #2b00ff;
+    background-color:  #335f47;
 }
 
 .close {
-    position: absolute; /* Absolute position within modal content */
-    top: 35px; /* Space from the top */
-    right: 50px; /* Space from the right */
+    position: absolute;
+    top: 35px;
+    right: 50px; 
     font-size: 40px;
     font-weight: bold;
     color: #aaa;
@@ -380,7 +487,7 @@ input[type="range"]::-webkit-slider-thumb {
     }
 }
 
-/* Mobile: Up to 425px */
+/* Mobile: Up to 675px */
 @media only screen and (max-width: 675px) {
     .shop-container {
         grid-template-columns: 1fr;
@@ -391,6 +498,13 @@ input[type="range"]::-webkit-slider-thumb {
     .hide {
         display: none;
     }
+    .show {
+        display: block;
+    }
+
+    .navbar ul {
+        justify-content: flex-end;
+    }
     .modal-content {
         width: 100%; 
         height: 100%;                   
@@ -399,11 +513,17 @@ input[type="range"]::-webkit-slider-thumb {
     }
 
     .modal-content img {
+        margin-top: 30px;
         width: 350px;
         margin-bottom: 10px;
         height:auto;
     }
-    
+    .close {
+        position: absolute;
+        top: 70px; 
+        left: 30px;
+    }
+
     .row {
         flex-direction: row;
         margin: 0 auto;

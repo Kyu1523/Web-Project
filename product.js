@@ -38,17 +38,6 @@ function loadCartFromLocalStorage() {
         updateCartUI();
     }
 }
-const hamburger = document.querySelector('.hamburger');
-const menu = document.querySelector('.hide');
-
-hamburger.addEventListener('click', () => {
-    if (menu.style.right === '0%') {
-        menu.style.right = '-100%'; // Hide the menu
-    } else {
-        menu.style.right = '0%'; // Show the menu
-    }
-});
-
 
 for (let i = 0; i < priceInputvalue.length; i++) {
     priceInputvalue[i].addEventListener("input", e => {
@@ -125,7 +114,7 @@ for (let i = 0; i < priceInputvalue.length; i++) {
             }
 
             const selectedCategory = document.querySelector('.filter-list li.active')?.textContent || 'All';
-            displayProducts(selectedCategory, minVal, maxVal); // Pass min and max to filter products
+            displayProducts(selectedCategory, minVal, maxVal);
         });
     }
 }
@@ -197,14 +186,13 @@ function displayProducts(category, minPrice = 0, maxPrice = 120) {
         button.disabled = product.availability_status === 'Out of Stock';
 
         if (product.availability_status === 'Out of Stock') {
-            button.classList.add('out'); // Style the "Out of Stock" button
+            button.classList.add('out'); 
         }
 
-        // Add to cart functionality
         button.addEventListener('click', () => {
             if (product.availability_status === 'In Stock') {
                 addToCart(product.id);
-                // Set modal content
+
                 modalProductName.textContent = product.name;
                 modalProductDescription.textContent = product.description;
                 modalProductPrice.textContent = `$${product.price.toFixed(2)}`;
@@ -215,7 +203,6 @@ function displayProducts(category, minPrice = 0, maxPrice = 120) {
                     modalProductImage.src = 'https://via.placeholder.com/300';
                 }
 
-                // Display the modal
                 modal.style.display = 'block';
             }
         });
@@ -232,7 +219,6 @@ function displayProducts(category, minPrice = 0, maxPrice = 120) {
         productList.appendChild(productDiv);
     });
 
-    // Handle "Load More" button visibility
     loadMoreButton.style.display = (loadMoreClicks + 1) * productsPerPage >= productsInRange.length ? 'none' : 'block';
 }
 
