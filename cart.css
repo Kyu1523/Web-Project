@@ -139,8 +139,8 @@ h2 {
     margin-bottom: 15px;
 }
 
-/* Tablet: Between 768px and 426px */
-@media only screen and (min-width: 650px) and (max-width: 850px) {
+/* Tablet: Between 675px and 850px */
+@media only screen and (min-width: 675px) and (max-width: 850px) {
     .cart-container {
         display: flex;
         flex-direction: row;
@@ -196,8 +196,8 @@ h2 {
         padding: 10px 15px;
     }
 }
-/* Mobile: Up to 425px */
-@media (max-width: 650px) {
+/* Mobile: Up to 675px */
+@media only screen and (max-width: 675px) {
     .cart-container {
         flex-direction: column;
         width: 90%;
