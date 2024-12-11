@@ -142,13 +142,47 @@ function calculateCost(){
     totalPriceElement.textContent = `Grand Total: $${grandTotal.toFixed(2)}`;
     // console.log("tax:", tax); 
     // console.log("total:", grandTotal); 
+    return { productTotal, tax, grandTotal, shippingCost };
 }
 function Successful_purchase(){
     if(cart.length === 0){
         alert("Purchase failed! Your cart is empty.")
     }
     else{
-        alert("Purchase success! Thank you for your purchase.")
+        const { productTotal, tax, grandTotal, shippingCost } = calculateCost();
+        const currentUser=localStorage.getItem('user');
+        const orderItems = cart.map(item => {
+            const product = products.find(p => p.id === item.productId);
+            return {
+                productId: product.id,
+                productName: product.name,
+                productPrice: product.price,
+                quantity: item.quantity,
+                totalPrice: product.price * item.quantity
+            };
+        });
+        // Store the order in localStorage 
+        const order = {
+            currentUser,
+            orderItems, 
+            productTotal,
+            tax,
+            shippingCost,
+            grandTotal,
+            orderDate: new Date().toISOString()
+        };
+         // Save order to localStorage or send to the server
+         let orders = JSON.parse(localStorage.getItem('orders')) || [];
+         orders.push(order);
+         localStorage.setItem('orders', JSON.stringify(orders)); 
+
+         alert("Purchase success! Thank you for your purchase.");
+ 
+         // Clear the cart
+         cart = [];
+         localStorage.removeItem('cart');
+         localStorage.removeItem('cartDate');
+         displayCart();
     }
 }
 function displayRecommendations() {
