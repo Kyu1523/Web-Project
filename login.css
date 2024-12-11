@@ -184,7 +184,7 @@ h2 {
     font-size: 24px;
 }
 input {
-    width: 90%;
+    width: 80%;
     padding: 10px;
     margin: 10px 0;
     border: 1px solid #ddd;
@@ -210,8 +210,13 @@ button:hover {
     .show {
         display: block;
     }
-
     .navbar ul {
         justify-content: flex-end;
     }
+    .login-container{
+        max-width: 500px;
+        width: 60%;
+        font-size: 14px;
+    }
+
 }
