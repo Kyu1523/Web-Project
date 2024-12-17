@@ -166,10 +166,10 @@ p{
     translate: 100%;
     padding: 50px 0px;
     background-color: rgb(205, 215, 208);
-    max-width: 10rem;
+    max-width: 12rem; 
+    width: 12rem;
     min-height: 100vh;
-    z-index: 1;
-    
+    z-index: 1;  
 }
 
 #menu-toggle:checked ~ .sidebar {
@@ -186,12 +186,13 @@ p{
 }
 
 .hamburger-menu:has(input:checked) + .sidebar {
-    translate: 0;
+    translate:0px;
 }
 
 
 .quiz-container {
-    max-width: 600px;
+    max-width: 500px;
+    width: 100%;
     margin: 1% auto 0; 
     padding: 20px;
     border: 1px solid #ddd;
@@ -241,5 +242,13 @@ p{
 
     .navbar ul {
         justify-content: flex-end;
+    }
+
+    .quiz-container {
+        width: 80%;
+        font-size: 13px;
+    }
+    .quiz-container button {
+        font-size: 15px;
     }
 }
