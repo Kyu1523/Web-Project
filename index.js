@@ -1,11 +1,15 @@
 let cart = [];
 let products = [];
+const currentUser = localStorage.getItem('user');
 
 async function fetchProducts() {
     try {
         const response = await fetch('https://6716f1943fcb11b265d3fceb.mockapi.io/api/v1/products'); 
         products = await response.json();
-        displayForYou();
+        sessionStorage.setItem("products",JSON.stringify(products));
+        if(!currentUser){
+            displayForYou();
+        }
         loadCartFromLocalStorage();
     } catch (error) {
         console.error('Error fetching products:', error);
@@ -30,24 +34,20 @@ function updateCartUI() {
 
 //Reads from products and displays them in the for you carousel
 function displayForYou(){
-    const carouselItems = document.querySelectorAll(".card-container");
+    const display = document.querySelector("#recommend-container");
     const uniqueIndices = new Set();
-    while (uniqueIndices.size < 7 && uniqueIndices.size < products.length) {
+    while (uniqueIndices.size < 4 && uniqueIndices.size < products.length) {
         const randomIndex = Math.floor(Math.random() * products.length);
-        uniqueIndices.add(randomIndex);
+        if(products[randomIndex].availability_status == "In Stock"){
+            uniqueIndices.add(randomIndex);
+        };
     }
-
-    let i = 0;
-    for(const index of uniqueIndices){
-        const card = createCard(products[index]);
-        i++;
-        if(i < 5){
-            carouselItems[0].append(card);
-        }
-        else{
-            carouselItems[1].append(card);
-        }
-    }
+    uniqueIndices.forEach(index =>{
+        const product = products[index];
+        const card = createCard(product);
+        display.appendChild(card);
+    
+    })
 }
 
 function createCard(product){
@@ -57,11 +57,30 @@ function createCard(product){
     `
         <a href = "product.html"><img src = "${product.image_path || 'https://via.placeholder.com/100'}"></a>
         <div class="card-body">
-            <p class="card-text">${product.name}</p>
+            <p class="card-name">${product.name}</p>
+            <p class="card-price"> $${product.price} </p>
         </div>
+         <button class="add-to-cart" data-id="${product.id}">Add to Cart</button>
     `;
+    const addToCartButton = card.querySelector('.add-to-cart');
+    addToCartButton.addEventListener('click', () => addToCart(product.id));
     return card;
 }
+function saveCartToLocalStorage() {
+    localStorage.setItem('cart', JSON.stringify(cart));
+}
 
+function addToCart(productId) {
+    const productInCart = cart.find(item => item.productId === productId);
+    
+    if (productInCart) {
+        productInCart.quantity++;
+    } 
+    else {
+        cart.push({ productId, quantity: 1 });
+    }
+    saveCartToLocalStorage();
+    updateCartUI();
+}
 fetchProducts();
 loadCartFromLocalStorage();
