@@ -1,7 +1,16 @@
-body {
-    font-family: Arial, sans-serif;
+html, body {
+    height: 100%;
     margin: 0;
+    padding: 0;
+    overflow-x:hidden;
 }
+
+body {
+    font-family: "Titillium Web", sans-serif;
+    display: flex;
+    flex-direction: column;
+}
+
 :root {
     --bar-width: 30px;
     --bar-height: 5px; /* Reduced height */
