@@ -79,7 +79,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script>
         const orders = JSON.parse(localStorage.getItem('orders')) || {};
-        const prod_list = JSON.parse(sessionStorage.getItem("products"));
+        const prod_list = JSON.parse(localStorage.getItem("products"));
         if(currentUser){                //gets user purchase history
             const userOrders = [];
             orders.forEach(order=> {
@@ -139,7 +139,7 @@
         //incase api doesn't work or has no data to build recommendation
         const Timeout = setTimeout(function() {
             if(!document.querySelector("#recommend-container").firstChild){
-                displayForYou(prod_list);}},55);
+                displayForYou(prod_list);}},65);
     </script>
 </body>
 </html>
