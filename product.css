@@ -545,6 +545,12 @@ input[type="range"]::-webkit-slider-thumb {
         padding: 60px 0px;                 
     }
 
+    .modal-content p{
+        margin: 0 auto; 
+        width: 350px;
+        padding: 30px 0px;
+    }
+
     .modal-content img {
         margin-top: 30px;
         width: 350px;
@@ -553,8 +559,8 @@ input[type="range"]::-webkit-slider-thumb {
     }
     .close {
         position: absolute;
-        top: 70px; 
-        left: 30px;
+        top: 30px; 
+        left: 25px;
     }
 
     .row {
