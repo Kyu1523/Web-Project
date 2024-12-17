@@ -21,15 +21,22 @@ document.getElementById('logout-btn').addEventListener('click', () => {
 function displayOrders(){
     const orders = JSON.parse(localStorage.getItem('orders')) || [];
     const ordersContainer = document.getElementById('orders-list');
+    const currentUser=localStorage.getItem('user');
     console.log('orders.size: ',orders.length);//test how much order in account page
 
-    if(orders.length==0){
+    if(!currentUser){
+        window.location.href='login.html';
+        return;
+    }
+
+    const userOrders = orders.filter(order => order.currentUser === currentUser);
+    if(userOrders.length==0){
         ordersContainer.innerHTML = '<p>No orders found. Start shopping now!</p>';
         return;
     }
     ordersContainer.innerHTML=``;
     //orders loop
-    orders.forEach((order,index)=>{
+    userOrders.forEach((order,index)=>{
         const orderCard=document.createElement('div');
         orderCard.classList.add('order-card');
         orderCard.setAttribute('data-index',index);//store index
@@ -39,7 +46,7 @@ function displayOrders(){
 
         
         orderCard.innerHTML=`
-         <h2>Order by: ${user}</h2>
+         <h2>Order by: ${currentUser}</h2>
             <p>Order Date: ${date}</p>
         `;
 
@@ -66,8 +73,8 @@ function displayOrders(){
         cancelButton.textContent = 'Cancel Order';
         cancelButton.classList.add('cancel-btn');
         cancelButton.addEventListener('click', () => {
-            orders.splice(index, 1);// Remove the order from the array 
-            localStorage.setItem('orders', JSON.stringify(orders)); // Update localStorage
+            orders.splice(orders.indexOf(order), 1);
+            localStorage.setItem('orders', JSON.stringify(orders));
 
             displayOrders();
 
@@ -82,3 +89,13 @@ function displayOrders(){
     });
 }
 displayOrders();
+//Update Cart count
+function updateCartUI() {
+    const cartCountElement = document.getElementById('cart-count');
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+    cartCountElement.textContent = totalItems;
+}
+document.addEventListener('DOMContentLoaded', function() {
+    updateCartUI();
+});

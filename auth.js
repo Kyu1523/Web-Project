@@ -2,8 +2,8 @@ window.onload = function () {
     const currentUser = localStorage.getItem('user');
     const currentPath = window.location.pathname;
     if (currentPath.includes('login.html') && currentUser) {
-        localStorage.setItem('user', "Admin");
-        alert(`Welcome Admin!`);
+        localStorage.setItem('user', currentUser);
+        alert(`Welcome ${currentUser}!`);
         window.location.href = 'orders.html';
     }
     if (currentPath.includes('orders.html') && !currentUser) {

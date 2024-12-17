@@ -145,6 +145,13 @@ function calculateCost(){
     return { productTotal, tax, grandTotal, shippingCost };
 }
 function Successful_purchase(){
+    const currentUser = localStorage.getItem('user');
+
+    if (!currentUser) {//if user no login
+        alert('Please log in first!');
+        window.location.href = 'login.html';
+        return; 
+    }
     if(cart.length === 0){
         alert("Purchase failed! Your cart is empty.")
     }

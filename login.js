@@ -14,7 +14,7 @@ document.getElementById('login-form').addEventListener('submit', function(e) {
         localStorage.setItem('user', "Admin");
         window.location.href = "orders.html";
     }
-    else if (username === "user" && password === "password") {
+    else if (validUser) {
         // Successful
         localStorage.setItem('user', username); 
         window.location.href = "orders.html"; 
@@ -22,4 +22,14 @@ document.getElementById('login-form').addEventListener('submit', function(e) {
     else {
         alert("Invalid username or password");
     }
+});
+//Update Cart count
+function updateCartUI() {
+    const cartCountElement = document.getElementById('cart-count');
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+    cartCountElement.textContent = totalItems;
+}
+document.addEventListener('DOMContentLoaded', function() {
+    updateCartUI();
 });
