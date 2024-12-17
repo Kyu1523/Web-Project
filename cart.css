@@ -19,7 +19,7 @@ body {
     --hamburger-height: calc(var(--bar-height) * 3 + var(--hamburger-gap) * 2);
     --animation-timing: 200ms ease-in-out;
     --foreground: #333;
-    --background: #edf3ec;
+    --background: #caebc5;
 }
 
 .navbar {
