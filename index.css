@@ -202,11 +202,12 @@ p{
 #For-you-text{
     margin-top:10vh;
     margin-left:15vw;
-    font-size: 2vw;
+    font-size: 36px;
 }
 
 #For-you img{
-    height:30vh;
+    /* height:30vh; */
+    width: 100%;
     object-fit: contain;
 }
 #recommend-container{
@@ -286,6 +287,77 @@ p{
     }
     .add-to-cart{
         padding:3% 8%;
+    }
+
+    #For-you-text{
+        margin-top:5vh;
+        margin-left:5vw;
+        font-size: 8vw;
+    }
+    
+    #For-you img{
+        width: 100%;
+        object-fit: contain;
+    }
+    #recommend-container{
+        display:flex;
+        justify-content: center;
+        flex-direction: column;
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+    
+    .card{
+        margin-left: 1vw;
+    }
+    .card img{
+        border-radius:5px ;
+        top:100%;
+        object-fit: fill;
+    }
+    
+    .carousel-control-next, .carousel-control-prev{
+        filter: invert(100%);
+    }
+    
+    .add-to-cart{
+        display: flex;
+        justify-content: flex-end;
+        font-weight: bold;
+        font-size: 20px;
+        padding: 8px 15px;
+        background-color:#448361;;
+        color: white;
+        border: none;
+        border-radius: 30px;
+        cursor: pointer;
+        margin: 0 auto;
+        margin-bottom: 10px;
+    }
+    
+    .add-to-cart:hover{
+        background-color:rgb(84, 179, 127);
+    }
+    
+    .add-to-cart:active{
+        background-color: #3e8e41;
+        transform: scale(1.05);
+    
+    }
+    .card-price{
+        font-size:20px;
+        margin:0;
+    }
+    .card-name{
+        font-weight: bold;
+        margin:0;
+        font-size:24px;
+    }
+    .card-body{
+        padding:0px;
+    }
+    .ais-RelatedProducts-title{
+        display:none;
     }
 }
 

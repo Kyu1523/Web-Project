@@ -269,30 +269,7 @@ p{
     color: #448361;
 }
 
-/* Tablet: Between 768px and 426px */
-@media only screen and (min-width: 650px) and (max-width: 850px) {
-    .shop-container {
-        grid-template-columns: 1.25fr 4fr;
-    }
-    .product-grid {
-        grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
-        gap: 40px;
-    }
-}
-
-/* Mobile: Up to 425px */
-@media only screen and (max-width: 650px) {
-    .shop-container {
-        grid-template-columns: 1fr;
-    }
-    #load-more {
-        grid-column: 1;
-    }
-    .hide {
-        display: none;
-    }
-}
-
+/* Mobile: Up to 675px */
 @media only screen and (max-width: 675px) {
     .hide {
         display: none;
@@ -304,4 +281,58 @@ p{
     .navbar ul {
         justify-content: flex-end;
     }
+
+    .content {
+        display: flex;
+        flex-direction: column;
+        max-width: 100%;
+        margin: 0 auto;
+        width: 90%;
+    
+        margin-top: 20px; 
+        padding: 20px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+    }
+
+    .content h1 {
+        margin-top: 0;
+        color: #448361;
+    }
+    
+    .content p {
+        font-size: 20px;
+    }
+    
+    .social-icons {
+        display: flex;
+        justify-content: space-around;
+        margin-left: 0%;
+        margin-right: 0%;
+    }
+    
+    .social-icons ul {
+        margin: 0;
+        padding: 0;
+        text-align: right;
+        margin-right: 0%;
+    }
+    
+    .social-icons ul li {
+        display: inline;
+        font-size: 36px;
+    }
+    
+    .social-icons ul li a {
+        color: rgb(0, 0, 0);
+        text-decoration: none;
+        padding: 10px 15px;
+        display: inline-block;
+    }
+    
+    .social-icons ul li a:hover {
+        color: #448361;
+    }
+
+    
 }
