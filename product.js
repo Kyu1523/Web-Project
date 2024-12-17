@@ -236,6 +236,17 @@ document.getElementById('load-more').addEventListener('click', () => {
     displayProducts(selectedCategory);
 });
 
+const toggleButton = document.getElementById("filter-toggle-btn");
+const filterSection = document.getElementById("filter-section");
+
+toggleButton.addEventListener("click", function () {
+    filterSection.classList.toggle("hide");
+    if (filterSection.classList.contains("hide")) {
+    } else {
+    }
+});
+
+
 //Add to cart
 function addToCart(productId) {
     const productInCart = cart.find(item => item.productId === productId);

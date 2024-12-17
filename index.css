@@ -189,18 +189,18 @@ p{
     translate: 0;
 }
 
-
 #carousel{
     background-color: rgb(241, 241, 241);
+    width: auto;
 }
 
 #carousel img{
-    height: 50vh;
     object-fit: contain;
+    height:20vw;
 }
 
 #For-you-text{
-    margin-top:10vh;
+    margin-top:10vw;
     margin-left:15vw;
     font-size: 36px;
 }

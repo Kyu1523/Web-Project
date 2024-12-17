@@ -132,6 +132,10 @@
             }
             const myTimeout = setTimeout(displayRec, 50);
         } 
+        else{
+            const title = document.querySelector("#For-you-text")
+            title.innerHTML = `Products`
+        }
         //incase api doesn't work or has no data to build recommendation
         const Timeout = setTimeout(function() {
             if(!document.querySelector("#recommend-container").firstChild){
