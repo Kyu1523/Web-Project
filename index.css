@@ -200,7 +200,7 @@ p{
 }
 
 #For-you-text{
-    margin-top:10vw;
+    margin-top:5vw;
     margin-left:15vw;
     font-size: 2vw;
 }
@@ -265,8 +265,8 @@ p{
 .card-body{
     padding:0px;
 }
-.ais-RelatedProducts-title{
-    display:none;
+#recommend-info{
+    display: none;
 }
 
 @media only screen and (max-width: 850px){
