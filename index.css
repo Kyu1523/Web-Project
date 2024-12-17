@@ -189,25 +189,27 @@ p{
     translate: 0;
 }
 
-
 #carousel{
     background-color: rgb(241, 241, 241);
+    width: auto;
 }
 
 #carousel img{
-    height: 50vh;
     object-fit: contain;
+    height:20vw;
 }
 
 #For-you-text{
-    margin-top:10vh;
+    margin-top:10vw;
     margin-left:15vw;
     font-size: 2vw;
 }
 
 #For-you img{
-    height:30vh;
-    object-fit: contain;
+    max-width: 100%;
+    height: 15vw;
+    width: auto\9;
+    
 }
 #recommend-container{
     display:flex;
@@ -286,6 +288,9 @@ p{
     }
     .add-to-cart{
         padding:3% 8%;
+    }
+    #carousel img{
+        height:30vw;
     }
 }
 
