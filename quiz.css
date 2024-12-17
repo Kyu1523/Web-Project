@@ -191,7 +191,8 @@ p{
 
 
 .quiz-container {
-    max-width: 600px;
+    max-width: 500px;
+    width: 100%;
     margin: 1% auto 0; 
     padding: 20px;
     border: 1px solid #ddd;
@@ -241,5 +242,13 @@ p{
 
     .navbar ul {
         justify-content: flex-end;
+    }
+
+    .quiz-container {
+        width: 80%;
+        font-size: 13px;
+    }
+    .quiz-container button {
+        font-size: 15px;
     }
 }
