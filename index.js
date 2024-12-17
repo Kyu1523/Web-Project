@@ -6,7 +6,7 @@ async function fetchProducts() {
     try {
         const response = await fetch('https://6716f1943fcb11b265d3fceb.mockapi.io/api/v1/products'); 
         products = await response.json();
-        sessionStorage.setItem("products",JSON.stringify(products));
+        localStorage.setItem("products",JSON.stringify(products));
         loadCartFromLocalStorage();
     } catch (error) {
         console.error('Error fetching products:', error);
