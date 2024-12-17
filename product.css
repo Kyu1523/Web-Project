@@ -155,10 +155,10 @@ body {
     translate: 100%;
     padding: 50px 0px;
     background-color: rgb(205, 215, 208);
-    max-width: 10rem;
+    max-width: 12rem; 
+    width: 12rem;
     min-height: 100vh;
-    z-index: 1;
-    
+    z-index: 1;  
 }
 
 #menu-toggle:checked ~ .sidebar {
