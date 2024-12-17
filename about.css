@@ -261,7 +261,7 @@ p{
 .social-icons ul li a {
     color: rgb(0, 0, 0);
     text-decoration: none;
-    padding: 10px 15px;
+    padding: 10px 0.5vw;
     display: inline-block;
 }
 
@@ -326,7 +326,7 @@ p{
     .social-icons ul li a {
         color: rgb(0, 0, 0);
         text-decoration: none;
-        padding: 10px 15px;
+        padding: 10px 1vw;
         display: inline-block;
     }
     
