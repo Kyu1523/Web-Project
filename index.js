@@ -7,9 +7,6 @@ async function fetchProducts() {
         const response = await fetch('https://6716f1943fcb11b265d3fceb.mockapi.io/api/v1/products'); 
         products = await response.json();
         sessionStorage.setItem("products",JSON.stringify(products));
-        if(!currentUser){
-            displayForYou();
-        }
         loadCartFromLocalStorage();
     } catch (error) {
         console.error('Error fetching products:', error);
@@ -33,18 +30,18 @@ function updateCartUI() {
 }
 
 //Reads from products and displays them in the for you carousel
-function displayForYou(){
+function displayForYou(prod_list){
     const display = document.querySelector("#recommend-container");
     const uniqueIndices = new Set();
-    while (uniqueIndices.size < 4 && uniqueIndices.size < products.length) {
-        const randomIndex = Math.floor(Math.random() * products.length);
-        if(products[randomIndex].availability_status == "In Stock"){
+    while (uniqueIndices.size < 4 && uniqueIndices.size < prod_list.length) {
+        const randomIndex = Math.floor(Math.random() * prod_list.length);
+        if(prod_list[randomIndex].availability_status == "In Stock"){
             uniqueIndices.add(randomIndex);
         };
     }
     uniqueIndices.forEach(index =>{
-        const product = products[index];
-        const card = createCard(product);
+        const card = createCard(prod_list[index]);
+        console.log(card);
         display.appendChild(card);
     
     })
