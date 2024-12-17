@@ -41,7 +41,6 @@ function displayForYou(prod_list){
     }
     uniqueIndices.forEach(index =>{
         const card = createCard(prod_list[index]);
-        console.log(card);
         display.appendChild(card);
     
     })
