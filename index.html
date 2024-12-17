@@ -13,7 +13,7 @@
 </head>
 <body>
     <nav class="nav-bar">
-        <h1>Shop Name</h1>
+        <h1>Tea Shop</h1>
         <ul>
             <li class="hide"><a href="index.html">Home</a></li>
             <li class="hide"><a href="quiz.html">Quiz</a></li>
@@ -73,13 +73,13 @@
 
     <div id = "For-you">
         <div id = "recommend-info"></div>
-        <div id = "recommend-container">
-        </div>
+        <div id = "recommend-container"></div>
     </div>
     <script src = "index.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script>
         const orders = JSON.parse(localStorage.getItem('orders')) || {};
+        const prod_list = JSON.parse(sessionStorage.getItem("products"));
         if(currentUser){                //gets user purchase history
             const userOrders = [];
             orders.forEach(order=> {
@@ -89,31 +89,33 @@
                     }
                 }
             });
-            
-            let randomIndex = Math.floor(Math.random() * userOrders.length);
-            randomIndex = randomIndex.toString();
-            
-            const searchClient = algoliasearch('F30ZE59TN3', 'fb2ef11790d781f2a91f22fa77c9c004');
-            const { relatedProducts } = instantsearch.widgets;
-            const search = instantsearch({
-            searchClient,
-            indexName: 'products',
-            }).addWidgets([
-            relatedProducts({
-                container: '#recommend-info',
-                objectIDs: [randomIndex],
-                limit: 4,
-                templates: {
-                    item(recommendation, { html }) {
-                        return html`
-                            <p>${recommendation.id}</p>
-                        `;
-                    },
-                }
-            }),
-            ]);
-            search.start();
-            
+
+            if(userOrders.length > 0){ 
+                let randomIndex = Math.floor(Math.random() * userOrders.length);
+                 randomIndex = randomIndex.toString();
+
+                const searchClient = algoliasearch('F30ZE59TN3', 'fb2ef11790d781f2a91f22fa77c9c004');
+                const { relatedProducts } = instantsearch.widgets;
+                const search = instantsearch({
+                searchClient,
+                indexName: 'products',
+                }).addWidgets([
+                relatedProducts({
+                    container: '#recommend-info',
+                    objectIDs: [randomIndex],
+                    limit: 4,
+                    templates: {
+                        item(recommendation, { html }) {
+                            return html`
+                                <p>${recommendation.id}</p>
+                            `;
+                        },
+                    }
+                }),
+                ]);
+                search.start();
+            }
+
             function displayRec(){
                 var html_data = document.querySelectorAll(".ais-RelatedProducts-item > p");
                 var rec_data = [];
@@ -122,8 +124,6 @@
                 })
                 const del = document.querySelector("#recommend-info");
                 del.remove();
-                const prod_list = JSON.parse(sessionStorage.getItem("products"));
-
                 const display = document.querySelector("#recommend-container");
                 rec_data.forEach(index =>{
                     const card = createCard(prod_list[index]);
@@ -131,8 +131,15 @@
                 })
             }
             const myTimeout = setTimeout(displayRec, 50);
-    
         } 
+        else{
+            const title = document.querySelector("#For-you-text")
+            title.innerHTML = `Products`
+        }
+        //incase api doesn't work or has no data to build recommendation
+        const Timeout = setTimeout(function() {
+            if(!document.querySelector("#recommend-container").firstChild){
+                displayForYou(prod_list);}},55);
     </script>
 </body>
 </html>
